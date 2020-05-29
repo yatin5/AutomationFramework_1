@@ -19,7 +19,6 @@ class TestLogin:
         login.enter_password(utils.PASSWORD)
         login.click_login()
 
-
     def test_logout(self):
 
         try:
@@ -35,10 +34,11 @@ class TestLogin:
             captureTime = moment.now().strftime("%H-%M-%S_%D-%M-%Y")
             testName = utils.whoami()
             screenshotName = testName + "_" + captureTime
-            allure.attach(driver.get_screenshot_as_png(), name=screenshotName,
+            allure.attach(self.driver.get_screenshot_as_png(), name=screenshotName,
                           attachment_type=allure.attachment_type.PNG)
-            driver.get_screenshot_as_file("/Users/yatin/Desktop/AutomationFramework_1/Screenshots/ "+screenshotName+".png")
-           # driver.save_screenshot("/Users/yatin/Desktop/AutomationFramework_1/Screenshots/"+screenshotName + ".png")
+            self.driver.get_screenshot_as_file(
+                "/Users/yatin/Desktop/AutomationFramework_1/Screenshots/ " + screenshotName + ".png")
+            # driver.save_screenshot("/Users/yatin/Desktop/AutomationFramework_1/Screenshots/"+screenshotName + ".png")
 
             raise
         except:
