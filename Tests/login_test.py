@@ -28,17 +28,18 @@ class TestLogin:
             homepage.click_welcome()
             homepage.click_logout()
             x = driver.title
-            assert x == "abc"
+            assert x == "OrangeHRM"
         except AssertionError as error:
             print("it was an Assertion error")
             print(error)
             captureTime = moment.now().strftime("%H-%M-%S_%D-%M-%Y")
             testName = utils.whoami()
             screenshotName = testName + "_" + captureTime
-            allure.attach(self.driver.get_screenshot_as_png(), name=screenshotName,
+            allure.attach(driver.get_screenshot_as_png(), name=screenshotName,
                           attachment_type=allure.attachment_type.PNG)
-            driver.get_screenshot_as_file("./Users/yatin/Desktop/AutomationFramework_1/Screenshots/ "+screenshotName+".png")
-            driver.save_screenshot("/Users/yatin/Desktop/AutomationFramework_1/Screenshots/ "+screenshotName+".png")
+            driver.get_screenshot_as_file("/Users/yatin/Desktop/AutomationFramework_1/Screenshots/ "+screenshotName+".png")
+           # driver.save_screenshot("/Users/yatin/Desktop/AutomationFramework_1/Screenshots/"+screenshotName + ".png")
+
             raise
         except:
             print("unable to go to homepage")
